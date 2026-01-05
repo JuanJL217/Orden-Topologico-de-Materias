@@ -1,0 +1,41 @@
+codigo;nombre;dependencias
+3260;Matematica I;
+3200;Química General;
+3201;Física I;
+3203;Biología;
+3261;Matematica II;3260
+3204;Química Inorgánica;3200
+3243;Física II;3201
+3207;Anatomía y Fisiología;3203
+3208;Microbiología General;3203
+3209;Química Orgánica;3200
+3247;Matemática III;3261
+3211;Fisicoquímica y Biofísica;3261;3201
+3212;Química Analítica;3204
+3244;Química biológica;3209
+3245;Bromatología I;3212;3209
+3216;Industría y Tecnología de los Alimentos I;3211
+3246;Microbiología de Alimentos I;3208
+3210;Estadística y Bioestadística;3262
+3219;Nutrición;3244
+3220;Bromatología II;3245
+3222;Industría y Tecnología de los Alimentos II;3216
+3262;Equipos e Instalaciones I;3216;3261;3243
+3248;Microbiología de los Alimentos II;3246
+3265;Toxicología;3244;3245
+3249;Bromatología III;3220
+3225;Industría y Tecnología de los Alimentos III;3222
+3263;Historia Legislación y Ética Profesional;3245
+3242;Práctica Preprofesional (Bromatología);3245;3246
+3264;Equipos e instalaciones II;3262
+3266;Calidad;3210;3245;3246
+3232;Conservación y empaque;3248
+3230;Instrumentación y Automatización;3262
+3231;Industría y Tecnología de los Alimentos IV;3225
+3267;Economía y Gestión Empresaria;3210
+3268;Formulación de proyectos industriales;3230;3232;3266;3267
+3269;Integración de la Industria Alimentaria;3231;3264;3266
+3270;Industria alimenticia y medio ambiente;3231;3266
+3236;Industria y tecnología de los Alimentos V;3231;3248;3249
+3271;Educación y Fiscalización;3210;3219;3231;3248
+3255;Trabajo Final;
