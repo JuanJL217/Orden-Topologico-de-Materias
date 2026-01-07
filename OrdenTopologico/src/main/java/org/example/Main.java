@@ -1,5 +1,6 @@
 package org.example;
 import Grafo.Grafo;
+import Grafo.Recorrido;
 import Materia.Materia;
 
 import javax.swing.plaf.synth.SynthTextAreaUI;
@@ -8,6 +9,7 @@ import java.util.ArrayList;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Optional;
 
 public class Main {
     public static void main(String[] args) {
@@ -37,12 +39,6 @@ public class Main {
             e.printStackTrace();
         }
 
-//        for (Materia m : materias) {
-//            System.out.println("Materia: " + m.getName());
-//            System.out.println("Codigo: " + m.getCode());
-//            System.out.println("Correlativas codigo: " + m.getDependenciesCode());
-//            System.out.println("--------");
-//        }
 
         for (Materia m : materias) {
             grafo.addNode(m.getCode(), m);
@@ -54,26 +50,14 @@ public class Main {
             }
         }
 
-//        ArrayList<Materia> materiasCorrelaivas = grafo.getAdyacentesById(3249);
-//
-//        System.out.println("Materia de codigo: 3249");
-//        System.out.println("Correlativas: ");
-//        for (Materia correlativas : materiasCorrelaivas) {
-//            System.out.println(correlativas.getCode() + " - " + correlativas.getName());
-//        }
+        grafo.forEachNode(materia -> {
+            System.out.println("Materia: " + materia.getName());
+            System.out.println("Abre las materias de: ");
+            grafo.forEachNeighbor(materia.getCode(), materiaQueAbre -> {
+                System.out.println("   " + materiaQueAbre.getName());
+            });
+            System.out.println("--------");
+        });
 
-        for (int i = 3000; i < 4000 ; i++) {
-            Materia m = grafo.getNode(i);
-            if (m != null) {
-                System.out.println("Materia: " + m.getName());
-                System.out.println("Abre las materias de: ");
-                ArrayList<Materia> materiasQueAbre = grafo.getAdyacentesById(m.getCode());
-                for (Materia w : materiasQueAbre) {
-                            System.out.println("   " + w.getName());
-                }
-                System.out.println("--------");
-            }
-
-        }
     }
 }

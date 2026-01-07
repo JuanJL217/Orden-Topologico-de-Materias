@@ -1,11 +1,7 @@
 package Grafo;
 
-import Materia.Materia;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
+import java.util.function.Consumer;
 
 public class Grafo<T> {
 
@@ -51,19 +47,41 @@ public class Grafo<T> {
         return true;
     }
 
-    public ArrayList<T> getAdyacentesById(Integer nodeId) {
+    public Optional<ArrayList<T>> getAdyacentesById(Integer nodeId) {
         if (!repositoryNode.containsKey(nodeId)) {
-            return null;
+            return Optional.empty();
         }
 
-        ArrayList<Integer> adyacentesId = this.grafo.get(nodeId);
         ArrayList<T> result = new ArrayList<>();
 
-        for (Integer id : adyacentesId) {
-            result.add(repositoryNode.get(id));
+        grafo.get(nodeId).forEach( id ->
+                result.add(repositoryNode.get(id))
+        );
+
+        return Optional.of(result);
+    }
+
+    public Optional<ArrayList<T>> getAllNodes() {
+        if (grafo.isEmpty()) {
+            return Optional.empty();
         }
 
-        return result;
+        return Optional.of(new ArrayList<>(repositoryNode.values()));
+    }
+
+    public void forEachNode(Consumer<T> action) {
+        repositoryNode.values().forEach(action);
+    }
+
+    public void forEachNeighbor(Integer fromId, Consumer<T> action) {
+        if (!repositoryNode.containsKey(fromId)) {
+            return;
+        }
+
+        grafo.get(fromId).forEach(id ->
+                action.accept(repositoryNode.get(id))
+        );
+
     }
 }
 
